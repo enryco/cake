@@ -5,19 +5,25 @@ import canvas from './canvas'
 
 class App extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     canvas()
   }
 
   render() {
     return (
       <div className="App">
-          <p id="desc" style={{ position: "absolute", width: "100vw", textAlign: "center"}}>
-            Order and Chaos
+        <p id="desc" style={{
+          position: "absolute",
+          width: "100vw",
+          textAlign: "center",
+          fontSize: 11,          
+          }}        
+        >
+          Order and Chaos
           </p>
         <div>
-        <canvas id="c">
-        </canvas>
+          <canvas id="c">
+          </canvas>
         </div>
       </div>
     );

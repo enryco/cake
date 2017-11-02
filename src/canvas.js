@@ -2,7 +2,6 @@ let request = require('request')
 
 export default function canvas() {
     const c = document.getElementById('c');
-    c.addEventListener("mousemove", e => handleEvent(e));
     c.addEventListener("click", e => handleClick(e));
     const ctx = c.getContext('2d');
     const dpr = window.devicePixelRatio;
@@ -12,6 +11,9 @@ export default function canvas() {
     c.height = ch * dpr;
     ctx.scale(dpr, dpr);
     ctx.translate(c.width / 2, c.height / 2)
+    ctx.font = "10px Helvetica";
+    ctx.fillText("Loading...", -10, 0);
+
 
     let body = document.getElementsByTagName('canvas')[0]
     let dec = document.getElementById('desc')
@@ -50,27 +52,6 @@ export default function canvas() {
         })
     }
 
-    function wick() {
-        ctx.beginPath()
-        ctx.rect(-2, -20, 4, 60)
-        ctx.fillStyle = 'grey'
-        ctx.fill()
-        ctx.closePath()
-    }
-
-    function flame(topX = 0, topY = -150, baseX = 0, baseY = 0, width = 160) {
-        ctx.clearRect(-c.width / 2, -c.height / 2, c.width, c.height)
-        ctx.beginPath()
-        ctx.moveTo(topX, topY);
-        ctx.quadraticCurveTo(width / 2, 0, baseX, baseY);
-        ctx.quadraticCurveTo(-width / 2, 0, topX, topY);
-        ctx.fillStyle = 'orange'
-        ctx.fill()
-        ctx.closePath()
-    }
-
-    flame()
-
     function circle(x, y, R) {
         ctx.beginPath()
         ctx.arc(x, y, R, 0, 2 * 3.14152962)
@@ -98,21 +79,16 @@ export default function canvas() {
                 if (i > 100) return console.error(':<')
             }
 
-            // w[0] = w[0] + dX * DIST;
-            // w[1] = w[1] + dY * DIST;
+
             ctx.lineTo(w[0], w[1])
             ctx.strokeStyle = colors[2]
             ctx.stroke()
-            // flame(w[0], w[1])
 
             let currentAnimation = setInterval(() => {
                 function animate() {
-                    //...   
+
                     w[0] = w[0] + dX * DIST / FRAMES;
                     w[1] = w[1] + dY * DIST / FRAMES;
-
-                    // flame(w[0], w[1])
-                    // wick()
                     ctx.lineTo(w[0], w[1])
                     ctx.strokeStyle = colors[2]
                     ctx.stroke()
@@ -129,20 +105,12 @@ export default function canvas() {
                 resolve()
             }, 100)
 
-            // for (let j = 0; j<FRAMES; j++) {
-            //     
-            // }
         })
     }
 
-    // setInterval(handleWiggle, 30);
 
     let tick = .02
     function animate(t) {
-        // console.log(t)
-        // if (t > tick * 1000) {
-        //     handleWiggle()
-        // }
 
         handleWiggle().then(() => {
             hehe = requestAnimationFrame(animate)
@@ -150,13 +118,10 @@ export default function canvas() {
             console.log(e)
         })
 
-        // console.log(t)
     }
 
     let click = false;
     function handleClick(params) {
-        // !click ? cancelAnimationFrame(hehe) : hehe = requestAnimationFrame(animate)
-        // click = click ? false : true
         init()
     }
 
@@ -177,10 +142,7 @@ export default function canvas() {
         getNewColors()
     }
 
-    getNewColors().then( () => init())
+    getNewColors().then(init)
+    setInterval(init, 30000)
 
-    function handleEvent(e) {
-        //...
-        // flame(e.clientX-c.width/2,e.clientY-c.height/2)
-    }
 }
