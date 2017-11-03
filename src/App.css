@@ -1,5 +1,10 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: snow;
+    background-color: gainsboro;
     overflow: hidden;
+}
+
+.playground-list-item:hover {
+  cursor: pointer;
+  background-color: orange;
 }

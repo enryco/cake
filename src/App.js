@@ -2,16 +2,34 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Pg1 from './playgrounds/Pg1'
+import Pg2 from './playgrounds/Pg2'
 
 class App extends Component {
+
+  state = {
+    pg : 0
+  }
 
   componentDidMount(){
   }
 
+  playgrounds = [
+    <Pg1/> ,
+    <Pg2/>
+  ]
+
   render() {
     return (
       <div className="App">
-          <Pg1 />
+          <div className="playground-list">
+            <div className="playground-list-item" onClick={() => this.setState({pg: 0})}> Playground #01 - Order and Chaos</div>
+            <div className="playground-list-item" onClick={() => this.setState({pg: 1})}> Playground #02 - Sticky Info </div>
+          </div>
+
+          {
+            this.playgrounds[this.state.pg]
+          }
+
       </div>
     );
   }
