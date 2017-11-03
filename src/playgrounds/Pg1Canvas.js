@@ -133,9 +133,9 @@ export default function canvas() {
         dec.style.color = colors[2]
         ctx.closePath()
         ctx.clearRect(-c.width / 2, -c.height / 2, c.width, c.height)
-        circle(0, 0, 150+25*(Math.random()-0.5))
-        ctx.moveTo(0,0)
-        w = [0,0]
+        circle(0, 0, 150 + 25 * (Math.random() - 0.5))
+        ctx.moveTo(0, 0)
+        w = [0, 0]
         ctx.beginPath()
         hehe = requestAnimationFrame(animate)
         console.log(hehe)
