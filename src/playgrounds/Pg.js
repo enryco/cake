@@ -12,7 +12,7 @@ class Playground extends Component {
     const testFam = this.state.testFam
     console.log(testFam)
     return (
-      <div className="Playground" style={{textAlign: "center"}}>
+      <div className="playground" style={{textAlign: "center"}}>
       </div>
     );
   }
