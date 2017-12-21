@@ -5,7 +5,7 @@ import Pg2 from './playgrounds/Pg2'
 import Pg3 from './playgrounds/Pg3'
 import Pg4 from './playgrounds/Pg4'
 import Pg5 from './playgrounds/Pg5'
-import Pg6 from './playgrounds/Pg6'
+import Pg6 from './playgrounds/FixedDynamicMenu'
 
 class App extends Component {
 

@@ -4,8 +4,6 @@ import { Collapse } from 'react-collapse';
 import { presets } from 'react-motion';
 
 
-
-
 class Playground extends Component {
 
   state = {
