@@ -1,19 +1,16 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: gainsboro;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 .playground-list-item:hover {
   cursor: pointer;
-  background-color: orange;
-}
+  background-color: orange; }
 
 .row {
   display: flex;
   flex: 1;
-  align-content: space-around;
-}
+  align-content: space-around; }
 
 .col {
   border: 0.5px solid;
@@ -21,5 +18,4 @@ body {
   text-align: center;
   justify-content: center;
   margin: 2px;
-  padding: 2px;
-}
+  padding: 2px; }
