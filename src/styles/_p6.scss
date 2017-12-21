@@ -1,38 +1,39 @@
 .p6-dynamic-menu {
-  &__menu {
-    position: absolute;
-    top: 30vh;
-    right: 70vw;
-    text-align: right;
-  }
-
-  &__placeholder {
-    visibility: hidden;
-    // color: gray;
-  }
-
-  &__item {
-    // background: rgb(170, 156, 156);
-    height: 30px;
-    font-size: 1.5em;
-
-    &.active {
-      font-weight: 900;
+    &__menu {
+        position: absolute;
+        top: 30vh;
+        right: 70vw;
+        text-align: right;
+        color: #777777;
+        user-select: none;
     }
 
-    cursor: pointer;
-  }
+    &__placeholder {
+        visibility: hidden;
 
-  &__line {
-    position: absolute;
-    right: 0;
-    top: calc(30vh + 105px);
-    width: 69vw;
-    height: 2px;
-    background: darkblue;
+        // color: gray;
 
+    }
 
-  }
+    &__item {
+        // background: rgb(170, 156, 156);
+        height: 30px;
+        font-size: 1.5em;
 
+        &.active {
+            font-weight: 900;
+            color: darkblue;
+        }
 
+        cursor: pointer;
+    }
+
+    &__line {
+        position: absolute;
+        right: 0;
+        top: calc(30vh + 105px);
+        width: 69vw;
+        height: 2px;
+        background: darkblue;
+    }
 }

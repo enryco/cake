@@ -24,7 +24,9 @@ body {
   position: absolute;
   top: 30vh;
   right: 70vw;
-  text-align: right; }
+  text-align: right;
+  color: #777777;
+  user-select: none; }
 
 .p6-dynamic-menu__placeholder {
   visibility: hidden; }
@@ -34,7 +36,8 @@ body {
   font-size: 1.5em;
   cursor: pointer; }
   .p6-dynamic-menu__item.active {
-    font-weight: 900; }
+    font-weight: 900;
+    color: darkblue; }
 
 .p6-dynamic-menu__line {
   position: absolute;
