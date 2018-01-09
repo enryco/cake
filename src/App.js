@@ -7,11 +7,12 @@ import Pg4 from './playgrounds/Pg4'
 import Pg5 from './playgrounds/Pg5'
 import Pg6 from './playgrounds/FixedDynamicMenu'
 import Pg7 from './playgrounds/Pg7'
+import Pg8 from './playgrounds/Pg8'
 
 class App extends Component {
 
   state = {
-    pg : 6
+    pg : 7
   }
 
   componentDidMount(){
@@ -25,6 +26,7 @@ class App extends Component {
     <Pg5/> ,
     <Pg6/> ,
     <Pg7/> ,
+    <Pg8/> ,
   ]
 
   render() {
@@ -38,6 +40,7 @@ class App extends Component {
             <div className="playground-list-item" onClick={() => this.setState({pg: 4})}> Playground #05 - ThreeJS </div>
             <div className="playground-list-item" onClick={() => this.setState({pg: 5})}> Playground #06 - Dynamic Menu </div>
             <div className="playground-list-item" onClick={() => this.setState({pg: 6})}> Playground #06 - FlowerPower</div>
+            <div className="playground-list-item" onClick={() => this.setState({pg: 7})}> Playground #06 - 😁 Clock</div>
           </div>
 
           {

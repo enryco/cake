@@ -46,7 +46,7 @@ class CyclicOrder extends Component {
     }
   }
 
-  coordinatesOnCircle = (index, elementsArray, _phi = 0) => {
+  coordinatesOnCircle = (index, elementsArray, _phi = 0, shouldSpin = true) => {
 
     const radius = this.radius()
     _phi -= 180 // correction as we want to display it analog to a clock
@@ -60,7 +60,7 @@ class CyclicOrder extends Component {
     const x = radius * Math.sin(alpha + phi)
     const y = radius * Math.cos(alpha + phi)
 
-    const spinAngle =  -(alpha + phi) + Math.PI
+    const spinAngle =  shouldSpin ? -(alpha + phi) + Math.PI : 0
 
     return { x, y, spinAngle }
   }
@@ -84,7 +84,7 @@ class CyclicOrder extends Component {
           offset.y -= this.ref[index].clientHeight / 2
         }
 
-        const circleCord = this.coordinatesOnCircle(index, arr, this.props.phi)
+        const circleCord = this.coordinatesOnCircle(index, arr, this.props.phi, this.props.shouldSpin)
 
         const rotate = `rotateZ(${circleCord.spinAngle}rad`
         const translate = `translate(${offset.x + circleCord.x}px,${offset.y + circleCord.y}px)`
@@ -118,7 +118,8 @@ CyclicOrder.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.element).isRequired,
   radiusRatio: PropTypes.number,
   radius: PropTypes.number,
-  phi: PropTypes.number
+  phi: PropTypes.number,
+  shouldSpin: PropTypes.bool,
 }
 
 
