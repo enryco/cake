@@ -12,40 +12,44 @@ import Pg8 from './playgrounds/Pg8'
 class App extends Component {
 
   state = {
-    pg : 7
+    pg: 7,
+    showMenu: false
   }
 
-  componentDidMount(){
+  componentDidMount() {
   }
 
   playgrounds = [
-    <Pg1/> ,
-    <Pg2/> ,
-    <Pg3/> ,
-    <Pg4/> ,
-    <Pg5/> ,
-    <Pg6/> ,
-    <Pg7/> ,
-    <Pg8/> ,
+    <Pg1 />,
+    <Pg2 />,
+    <Pg3 />,
+    <Pg4 />,
+    <Pg5 />,
+    <Pg6 />,
+    <Pg7 />,
+    <Pg8 />,
   ]
 
   render() {
     return (
       <div className="App">
-          <div className="playground-list">
-            <div className="playground-list-item" onClick={() => this.setState({pg: 0})}> Playground #01 - Order and Chaos</div>
-            <div className="playground-list-item" onClick={() => this.setState({pg: 1})}> Playground #02 - Sticky Info </div>
-            <div className="playground-list-item" onClick={() => this.setState({pg: 2})}> Playground #03 - Recursive Family Tree </div>
-            <div className="playground-list-item" onClick={() => this.setState({pg: 3})}> Playground #04 - ThreeJS </div>
-            <div className="playground-list-item" onClick={() => this.setState({pg: 4})}> Playground #05 - ThreeJS </div>
-            <div className="playground-list-item" onClick={() => this.setState({pg: 5})}> Playground #06 - Dynamic Menu </div>
-            <div className="playground-list-item" onClick={() => this.setState({pg: 6})}> Playground #06 - FlowerPower</div>
-            <div className="playground-list-item" onClick={() => this.setState({pg: 7})}> Playground #06 - 😁 Clock</div>
-          </div>
 
-          {
-            this.playgrounds[this.state.pg]
-          }
+        {
+          this.state.showMenu && <div className="playground-list">
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 0 })}> Playground #01 - Order and Chaos</div>
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 1 })}> Playground #02 - Sticky Info </div>
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 2 })}> Playground #03 - Recursive Family Tree </div>
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 3 })}> Playground #04 - ThreeJS </div>
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 4 })}> Playground #05 - ThreeJS </div>
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 5 })}> Playground #06 - Dynamic Menu </div>
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 6 })}> Playground #06 - FlowerPower</div>
+            <div className="playground-list-item" onClick={() => this.setState({ pg: 7 })}> Playground #06 - 😁 Clock</div>
+          </div>
+        }
+
+        {
+          this.playgrounds[this.state.pg]
+        }
 
       </div>
     );
