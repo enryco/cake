@@ -20,6 +20,7 @@ class Playground extends Component {
           <div className="pg-slider__icon pg-slider__icon--moon">🌚</div>
           <div className={`pg-slider__knob ${this.state.knobActive ? "pg-slider__knob--active" : ""}`} ></div>
         </div>
+        would be nicer to drag this toggl, right?
       </div>
     );
   }

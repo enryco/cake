@@ -7,9 +7,45 @@ body {
     width: 100vw;
 }
 
-.playground-list-item:hover {
-    cursor: pointer;
-    background-color: orange;
+.App {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-rows: auto;
+    grid-template: "sidebar" "content";
+}
+
+.content {
+    grid-area: content;
+    background: #f7f7f7;
+}
+
+.playground-list {
+    grid-area: sidebar;
+    background: darkgray;
+
+    // width: 200px;
+    // height: 100vh;
+
+    &__item:hover {
+        cursor: pointer;
+        background-color: blueviolet;
+        color: white;
+    }
+
+    &__item--active {
+        color: white;
+        background: blueviolet;
+    }
+
+    &__menu-toggle {
+        text-align: center;
+        background: darkgray;
+
+        &:hover {
+            cursor: pointer;
+            background: blueviolet;
+        }
+    }
 }
 
 .row {

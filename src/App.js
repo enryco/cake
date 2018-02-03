@@ -10,11 +10,12 @@ import Pg7 from './playgrounds/Pg7'
 import Pg8 from './playgrounds/Pg8'
 import Pg9 from './playgrounds/Pg9'
 import _ from 'lodash'
+import { Collapse } from 'react-collapse';
 
 class App extends Component {
 
   state = {
-    pg: 8,
+    pg: 7,
     showMenu: true
   }
 
@@ -35,32 +36,36 @@ class App extends Component {
 
   render() {
     const playgroundNames = [
-      "Playground #00 - Order and Chaos",
-      "Playground #01 - Sticky Info ",
-      "Playground #02 - Recursive Family Tree ",
-      "Playground #03 - ThreeJS ",
-      "Playground #04 - ThreeJS ",
-      "Playground #05 - Dynamic Menu ",
-      "Playground #06 - FlowerPower",
-      "Playground #07 - 😁 Clock",
-      "Playground #08 - Fake Toggel",
+      "Order and Chaos",
+      "Sticky Info ",
+      "Recursive Family Tree ",
+      "ThreeJS ",
+      "ThreeJS ",
+      "Dynamic Menu ",
+      "FlowerPower",
+      "😁 Clock",
+      "Fake Toggel",
     ]
 
     return (
       <div className="App">
-
-        {
-          this.state.showMenu && <div className="playground-list">
+        <div className="playground-list">
+          <Collapse isOpened={this.state.showMenu} >
             {
-              _.map(playgroundNames, (name, index) => <div className="playground-list-item" onClick={() => this.setState({ pg: index })}>{name}</div>)
+              _.map(playgroundNames, (name, index) => {
+                const active = this.state.pg === index ? true : false
+                return <div key={index} className={`playground-list__item ${active && "playground-list__item--active"}`} onClick={() => this.setState({ pg: index })}>#{index} {name}</div>
+              })
             }
-          </div>
-        }
+          </Collapse>
+          <div className={`playground-list__menu-toggle`} onClick={() => this.setState({ showMenu: !this.state.showMenu })}>{this.state.showMenu ? '⬆⬆⬆' : '⬇⬇⬇'}</div>
+        </div>
 
-        {
-          this.playgrounds[this.state.pg]
-        }
-
+        <div className="content">
+          {
+            this.playgrounds[this.state.pg]
+          }
+        </div>
       </div>
     );
   }

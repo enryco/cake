@@ -72,6 +72,14 @@ class FlowerPower extends Component {
     // this.animate()
   }
 
+  componentWillUnmount() {
+    console.log('unmounting')
+
+    this.setState({
+      animate: false,
+    })
+  }
+
   constructFlowerElement = (url, w, h) => {
     return <img src={url} alt="" style={{ width: w }} />
   }
@@ -116,7 +124,7 @@ class FlowerPower extends Component {
             padding: 5,
             width: 75,
             color: 'white',
-            }}
+          }}
           onClick={this.handleClick} >
           {animate ? 'stop' : 'animate'}
         </button>

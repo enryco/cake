@@ -3,7 +3,7 @@ import CyclicOrder from './CyclicOrder'
 import _ from 'lodash'
 import moment from 'moment'
 
-class FlowerPower extends Component {
+class CakePower extends Component {
 
   state = {
     animate: false,
@@ -16,7 +16,15 @@ class FlowerPower extends Component {
     this.handleClick()
   }
 
-  animate = () => {
+  componentWillUnmount() {
+    console.log("bye")
+
+    this.setState({
+      animate: false,
+    })
+  }
+
+  animate = (requestAnimationFrameBool) => {
 
     const hours = Number(moment().format('h'))
     const minutes = moment().minutes()
@@ -37,7 +45,9 @@ class FlowerPower extends Component {
       input
     })
 
-    if (this.state.animate) requestAnimationFrame(this.animate)
+    if (this.state.animate || requestAnimationFrameBool ) {
+      requestAnimationFrame(this.animate)
+    }
 
   }
 
@@ -45,7 +55,8 @@ class FlowerPower extends Component {
   handleClick = (e) => {
     e && e.preventDefault()
     this.setState({ animate: !this.state.animate })
-    requestAnimationFrame(this.animate)
+    this.animate(true)
+    // requestAnimationFrame(this.animate)
   }
 
   render() {
@@ -58,10 +69,9 @@ class FlowerPower extends Component {
     return (
       <div className="" style={{
         background: "white",
-        width: "100vw",
         height: "100vh",
         textAlign: 'center',
-        fontSize: 12,
+        fontSize: 16,
         background: 'ivory',
       }}
         onMouseMove={e => this.setState({ mouse: { x: e.clientX, y: e.clientY } })}
@@ -70,18 +80,18 @@ class FlowerPower extends Component {
         <h2>It's 🍰'o'clock!</h2>
         <CyclicOrder
           phi={0}
-          radiusRatio={2.7}
+          radiusRatio={3.6}
           elements={_.times(12, () => <span>|</span>)}
         />
         <CyclicOrder
           phi={0}
-          radiusRatio={2.3}
+          radiusRatio={3.3}
           shouldSpin={false}
           elements={_.times(12, (i) => <span>{++i}</span>)}
         />
         <CyclicOrder
           phi={0}
-          radiusRatio={2.5}
+          radiusRatio={3.5}
           elements={_.concat(_.times(moment().seconds() + 1, () => <div>{'.'}</div>), _.times(59 - moment().seconds(), () => <div>🍰</div>))}
         />
         <CyclicOrder
@@ -99,7 +109,7 @@ class FlowerPower extends Component {
         />
         <CyclicOrder
           phi={secondsAngle}
-          radiusRatio={2.5}
+          radiusRatio={3.5}
           elements={_.times(1, () => <div>{this.state.input}</div>)}
         />
       </div>
@@ -107,4 +117,4 @@ class FlowerPower extends Component {
   }
 }
 
-export default FlowerPower;
+export default CakePower;
