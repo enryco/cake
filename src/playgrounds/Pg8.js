@@ -61,7 +61,8 @@ class FlowerPower extends Component {
         width: "100vw",
         height: "100vh",
         textAlign: 'center',
-        fontSize: 12
+        fontSize: 12,
+        background: 'ivory',
       }}
         onMouseMove={e => this.setState({ mouse: { x: e.clientX, y: e.clientY } })}
       >

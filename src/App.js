@@ -8,12 +8,14 @@ import Pg5 from './playgrounds/Pg5'
 import Pg6 from './playgrounds/FixedDynamicMenu'
 import Pg7 from './playgrounds/Pg7'
 import Pg8 from './playgrounds/Pg8'
+import Pg9 from './playgrounds/Pg9'
+import _ from 'lodash'
 
 class App extends Component {
 
   state = {
-    pg: 7,
-    showMenu: false
+    pg: 8,
+    showMenu: true
   }
 
   componentDidMount() {
@@ -28,22 +30,30 @@ class App extends Component {
     <Pg6 />,
     <Pg7 />,
     <Pg8 />,
+    <Pg9 />,
   ]
 
   render() {
+    const playgroundNames = [
+      "Playground #00 - Order and Chaos",
+      "Playground #01 - Sticky Info ",
+      "Playground #02 - Recursive Family Tree ",
+      "Playground #03 - ThreeJS ",
+      "Playground #04 - ThreeJS ",
+      "Playground #05 - Dynamic Menu ",
+      "Playground #06 - FlowerPower",
+      "Playground #07 - 😁 Clock",
+      "Playground #08 - Fake Toggel",
+    ]
+
     return (
       <div className="App">
 
         {
           this.state.showMenu && <div className="playground-list">
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 0 })}> Playground #01 - Order and Chaos</div>
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 1 })}> Playground #02 - Sticky Info </div>
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 2 })}> Playground #03 - Recursive Family Tree </div>
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 3 })}> Playground #04 - ThreeJS </div>
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 4 })}> Playground #05 - ThreeJS </div>
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 5 })}> Playground #06 - Dynamic Menu </div>
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 6 })}> Playground #06 - FlowerPower</div>
-            <div className="playground-list-item" onClick={() => this.setState({ pg: 7 })}> Playground #06 - 😁 Clock</div>
+            {
+              _.map(playgroundNames, (name, index) => <div className="playground-list-item" onClick={() => this.setState({ pg: index })}>{name}</div>)
+            }
           </div>
         }
 
